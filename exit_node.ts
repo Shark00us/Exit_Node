@@ -37,7 +37,7 @@
 // of an offline exit node is that ChatGPT/Claude/Grok stop working;
 // other sites are unaffected.
 
-const PSK = "d353541849cd10b10d066f244854bd614febac69f26e4b673763b12aaf9ad36a";
+const PSK = "CHANGE_ME_TO_A_STRONG_SECRET";
 
 // Headers the client may send that must NOT be forwarded to the
 // destination — they're hop-by-hop or would break re-encoding.
@@ -173,13 +173,3 @@ export default async function (req: Request): Promise<Response> {
     return Response.json({ e: message }, { status: 500 });
   }
 }
-if (import.meta.main) {
-  Deno.serve((req: Request) => {
-    // Call your existing handler
-    return handler(req);
-  });
-}
-
-// Rename your existing function or keep it as default export
-// Option 1: Keep default export and create named handler
-const handler = defaultExport;
