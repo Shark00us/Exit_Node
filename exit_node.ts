@@ -173,3 +173,13 @@ export default async function (req: Request): Promise<Response> {
     return Response.json({ e: message }, { status: 500 });
   }
 }
+if (import.meta.main) {
+  Deno.serve((req: Request) => {
+    // Call your existing handler
+    return handler(req);
+  });
+}
+
+// Rename your existing function or keep it as default export
+// Option 1: Keep default export and create named handler
+const handler = defaultExport;
